@@ -18,6 +18,6 @@ RUN pip3 install Sphinx sphinx_rtd_theme
 ARG language=en
 RUN make -e "SPHINXOPTS=-D language='${language}'" html
 
-FROM nginx
+FROM nginx:1.29.4-trixie
 WORKDIR /usr/share/nginx/html
 COPY --from=sphinx_build /app/_build/html /usr/share/nginx/html
